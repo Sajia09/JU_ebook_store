@@ -1,3 +1,4 @@
+const { ObjectId } = require('mongodb');
 
 /**
  * Represents a user.
