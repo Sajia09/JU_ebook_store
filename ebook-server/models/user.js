@@ -1,29 +1,44 @@
+const { ObjectId } = require('mongodb');
+
 /**
- * Represents a user model in the e-book store.
+ * Represents a user.
  * @class
  */
-class UserModel {
+class User {
     /**
-     * Creates an instance of UserModel.
-     * @constructor
-     * @param {number} id - The user ID.
-     * @param {string} name - The user's name.
-     * @param {string} email - The user's email address.
+     * Creates a new User instance.
+     * @param {import('mongodb').Db} db - The MongoDB database instance.
      */
-    constructor(id, name, email) {
-      this.id = id;
-      this.name = name;
-      this.email = email;
+    constructor(db) {
+        this.collection = db.collection('users');
     }
-  
+
     /**
-     * Updates the user profile with the provided name and email.
-     * @param {string} name - The new name for the user.
-     * @param {string} email - The new email address for the user.
+     * Find a user by email.
+     * @param {string} email - The email of the user.
+     * @returns {Promise<object|null>} A promise that resolves with the user object if found, or null if not found.
      */
-    updateProfile(name, email) {
-      this.name = name;
-      this.email = email;
+    async findByEmail(email) {
+        return await this.collection.findOne({ email });
     }
-  }
-  
+
+    /**
+     * Find a user by ID.
+     * @param {string} id - The ID of the user.
+     * @returns {Promise<object|null>} A promise that resolves with the user object if found, or null if not found.
+     */
+    async findById(id) {
+        return await this.collection.findOne({ _id: ObjectId(id) });
+    }
+
+    /**
+     * Create a new user.
+     * @param {object} user - The user object containing email, password, and userType.
+     * @returns {Promise<object>} A promise that resolves with the inserted user object.
+     */
+    async createUser(user) {
+        return await this.collection.insertOne(user);
+    }
+}
+
+module.exports = User;
