@@ -2,13 +2,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const { MongoClient } = require('mongodb');
 const { login } = require('./controllers/authController');
-const User = require('./models/User');
+const User = require('./models/user');
 const config = require('./config');
 
 const app = express();
 const PORT = 3001;
 const MONGO_URL = 'mongodb://localhost:27017';
-const DB_NAME = 'ju_ebook_store';
+const DB_NAME = 'ebookstore';
 
 app.use(bodyParser.json());
 
