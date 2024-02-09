@@ -14,3 +14,14 @@ router.get('/:userId', async (req, res) => {
   const wishlist = await wishlistController.getWishlist(userId);
   res.json(wishlist);
 });
+
+/**
+ * @route POST /api/wishlist/add/:userId/:bookId
+ * @returns {object} - Updated wishlist
+ * @group Wishlist
+ */
+router.post('/add/:userId/:bookId', async (req, res) => {
+  const { userId, bookId } = req.params;
+  const updatedWishlist = await wishlistController.addToWishlist(userId, bookId);
+  res.json(updatedWishlist);
+});
