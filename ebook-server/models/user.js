@@ -1,44 +1,43 @@
-const { ObjectId } = require('mongodb');
+/**
+ * Represents a user model in the MongoDB database.
+ * @typedef {Object} User
+ * @property {string} name - The name of the user.
+ * @property {string} email - The email address of the user.
+ */
 
 /**
- * Represents a user.
+ * Represents a user model.
  * @class
  */
-class User {
-    /**
-     * Creates a new User instance.
-     * @param {import('mongodb').Db} db - The MongoDB database instance.
-     */
-    constructor(db) {
-        this.collection = db.collection('users');
-    }
+class UserModel {
+  /**
+   * Creates an instance of UserModel.
+   * @constructor
+   * @param {Object} db - The MongoDB database connection.
+   */
+  constructor(db) {
+    this.db = db;
+    this.collection = this.db.collection('users');
+  }
 
-    /**
-     * Find a user by email.
-     * @param {string} email - The email of the user.
-     * @returns {Promise<object|null>} A promise that resolves with the user object if found, or null if not found.
-     */
-    async findByEmail(email) {
-        return await this.collection.findOne({ email });
+  /**
+   * Updates the user profile with the provided name and email.
+   * @param {string} id - The ID of the user.
+   * @param {string} name - The new name for the user.
+   * @param {string} email - The new email address for the user.
+   * @returns {Promise<User>} The updated user object.
+   */
+  async updateProfile(id, name, email) {
+    try {
+      const result = await this.collection.updateOne(
+        { _id: id },
+        { $set: { name, email } }
+      );
+      return result.modifiedCount === 1 ? { name, email } : null;
+    } catch (error) {
+      throw new Error('Failed to update profile');
     }
-
-    /**
-     * Find a user by ID.
-     * @param {string} id - The ID of the user.
-     * @returns {Promise<object|null>} A promise that resolves with the user object if found, or null if not found.
-     */
-    async findById(id) {
-        return await this.collection.findOne({ _id: ObjectId(id) });
-    }
-
-    /**
-     * Create a new user.
-     * @param {object} user - The user object containing email, password, and userType.
-     * @returns {Promise<object>} A promise that resolves with the inserted user object.
-     */
-    async createUser(user) {
-        return await this.collection.insertOne(user);
-    }
+  }
 }
 
-module.exports = User;
+module.exports = UserModel;
