@@ -1,5 +1,6 @@
 {
   "name": "ebook-server",
+  "type":"module",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -14,5 +15,12 @@
     "express": "^4.18.2",
     "mongodb": "^6.3.0",
     "nodemon": "^3.0.3"
+  },
+  "jest": {
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/.vscode/"
+    ]
   }
+  
 }
