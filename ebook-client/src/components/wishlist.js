@@ -11,6 +11,7 @@ const Wishlist = ({ userId }) => {
   useEffect(() => {
     fetchWishlist();
   }, []);
+
   const fetchWishlist = async () => {
     try {
       const response = await axios.get(`/api/wishlist/${userId}`);
@@ -19,3 +20,6 @@ const Wishlist = ({ userId }) => {
       console.error('Error fetching wishlist:', error);
     }
   };
+
+  
+export default Wishlist;
