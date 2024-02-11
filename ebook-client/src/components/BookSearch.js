@@ -1,22 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-/**
- * Component for searching books.
- * @component
- */
-function BookSearch() {
+const BookSearch = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
-  /**
-   * Handles the book search.
-   * @param {string} term - The search term entered by the user.
-   * @returns {void}
-   */
-  const handleSearch = async (term) => {
+  const handleSearch = async () => {
     try {
-      const response = await axios.get(`/api/books?search=${term}`);
+      const response = await axios.get(`/api/books?search=${searchTerm}`);
       setSearchResults(response.data);
     } catch (error) {
       console.error('Error searching books:', error);
@@ -31,7 +22,7 @@ function BookSearch() {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
-      <button onClick={() => handleSearch(searchTerm)}>Search</button>
+      <button onClick={handleSearch}>Search</button>
       <ul>
         {searchResults.map((book) => (
           <li key={book._id}>{book.title}</li>
@@ -39,6 +30,6 @@ function BookSearch() {
       </ul>
     </div>
   );
-}
+};
 
 export default BookSearch;

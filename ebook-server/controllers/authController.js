@@ -1,33 +1,72 @@
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
-const config = require('../config');
-const User = require('../models/user');
-
 /**
- * Authenticates user and generates JWT token
- * @param {string} email - User's email
- * @param {string} password - User's password
- * @param {string} userType - User's type (student, teacher, admin)
- * @returns {Promise<string>} JWT token
+ * Unit tests for the authentication controller.
+ * @module __tests__/authController
  */
-async function login(email, password, userType) {
-    const user = await User.findByEmail(email);
 
-    if (!user) {
-        throw new Error('Invalid email or password');
-    }
+const { login } = require('../controllers/authController');
 
-    const validPassword = await bcrypt.compare(password, user.password);
+// Mock dependencies
+jest.mock('jsonwebtoken', () => ({
+  sign: jest.fn(() => 'mockedToken')
+}));
 
-    if (!validPassword) {
-        throw new Error('Invalid email or password');
-    }
+describe('login', () => {
+  it('should return JWT token for valid credentials', async () => {
+    // Mock the user data
+    const mockUser = {
+      _id: '123',
+      email: 'test@example.com',
+      password: 'hashedPassword',
+      userType: 'student'
+    };
+    
+    // Mock the user model's findOne method
+    jest.mock('../models/User', () => ({
+      findOne: jest.fn().mockResolvedValue(mockUser)
+    }));
 
-    if (user.userType !== userType) {
-        throw new Error('Invalid user type');
-    }
+    // Mock bcrypt compare method
+    jest.mock('bcrypt', () => ({
+      compare: jest.fn().mockResolvedValue(true)
+    }));
 
-    return jwt.sign({ userId: user._id, userType: user.userType }, config.secret, { expiresIn: '24h' });
-}
+    // Call the login function
+    const token = await login('test@example.com', 'password', 'student');
+    
+    // Check if token is returned
+    expect(token).toEqual('mockedToken');
+  });
 
-module.exports = { login };
+  it('should throw an error for invalid email or password', async () => {
+    // Mock the user model's findOne method
+    jest.mock('../models/User', () => ({
+      findOne: jest.fn().mockResolvedValue(null)
+    }));
+
+    // Call the login function
+    await expect(login('invalid@example.com', 'invalidPassword', 'student')).rejects.toThrow('Invalid email or password');
+  });
+
+  it('should throw an error for invalid user type', async () => {
+    // Mock the user data
+    const mockUser = {
+      _id: '123',
+      email: 'test@example.com',
+      password: 'hashedPassword',
+      userType: 'teacher' // Invalid userType
+    };
+    
+    // Mock the user model's findOne method
+    jest.mock('../models/User', () => ({
+      findOne: jest.fn().mockResolvedValue(mockUser)
+    }));
+
+    // Mock bcrypt compare method
+    jest.mock('bcrypt', () => ({
+      compare: jest.fn().mockResolvedValue(true)
+    }));
+
+    // Call the login function
+    await expect(login('test@example.com', 'password', 'student')).rejects.toThrow('Invalid user type');
+  });
+});
