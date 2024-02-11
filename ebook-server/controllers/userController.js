@@ -1,4 +1,4 @@
-const UserModel = require('./userModel');
+const UserModel = require('D:/CSE/4 Fourth Year/4-2/SQA PROJECT/Orthi/JU_ebook_store/ebook-server/models/userModel.js');
 
 /**
  * Represents the controller for managing user profiles.
