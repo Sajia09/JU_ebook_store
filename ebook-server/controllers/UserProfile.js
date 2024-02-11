@@ -1,36 +1,36 @@
+const UserModel = require('../models/user.js');
+
 /**
- * Represents a controller for managing user profiles in the e-book store.
- * @class
+ * Represents the controller for managing user profiles.
  */
-class UserProfileController {
-    /**
-     * Creates an instance of UserProfileController.
-     * @constructor
-     * @param {UserModel} model - The UserModel instance.
-     * @param {UserProfileView} view - The UserProfileView instance.
-     */
-    constructor(model, view) {
-      this.model = model;
-      this.view = view;
-    }
-  
-    /**
-     * Updates the user profile with the provided name and email.
-     * @param {string} name - The new name for the user.
-     * @param {string} email - The new email address for the user.
-     */
-    updateProfile(name, email) {
-      // Validate user input
-      if (!ValidationUtil.isValidEmail(email)) {
-        console.log('Invalid email');
-        return;
-      }
-  
+class UserController {
+  /**
+   * Creates an instance of the UserController.
+   * @param {Object} database - The MongoDB database connection.
+   */
+  constructor(database) {
+    this.userModel = new UserModel(database);
+  }
+
+  /**
+   * Updates the user profile with the provided attributes.
+   * @param {string} userId - The ID of the user.
+   * @param {string} name - The new name for the user.
+   * @param {string} email - The new email address for the user.
+   * @param {string} phone - The new phone number for the user.
+   * @param {number} age - The new age of the user.
+   * @param {string} address - The new address of the user.
+   * @returns {Promise<Object>} The updated user object.
+   */
+  async updateUser(userId, name, email, phone, age, address) {
+    try {
       // Update user profile
-      this.model.updateProfile(name, email);
-  
-      // Display updated profile
-      this.view.displayProfile(this.model);
+      const updatedUser = await this.userModel.updateUser(userId, name, email, phone, age, address);
+      return updatedUser;
+    } catch (error) {
+      throw new Error('Failed to update user: ' + error.message);
     }
   }
-  
+}
+
+module.exports = UserController;
