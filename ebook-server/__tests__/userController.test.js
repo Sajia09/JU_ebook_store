@@ -1,7 +1,7 @@
-const userController = require('D:/CSE/4 Fourth Year/4-2/SQA PROJECT/Orthi/JU_ebook_store/ebook-server/controllers/userController.js');
+const userController = require('../controllers/UserProfile.js');
 
 // Mocking the UserModel module
-jest.mock('D:/CSE/4 Fourth Year/4-2/SQA PROJECT/Orthi/JU_ebook_store/ebook-server/models/userModel.js', () => {
+jest.mock('D:/CSE/4 Fourth Year/4-2/SQA PROJECT/Orthi/JU_ebook_store/ebook-server/models/user.js', () => {
   return jest.fn().mockImplementation(() => {
     return {
       updateUser: jest.fn().mockResolvedValue({
