@@ -1,42 +1,73 @@
-/**
- * Represents a user model in the MongoDB database.
- * @typedef {Object} User
- * @property {string} name - The name of the user.
- * @property {string} email - The email address of the user.
- */
+const { ObjectId } = require('mongodb');
 
 /**
- * Represents a user model.
- * @class
+ * Represents the user model for the E-book store.
  */
 class UserModel {
   /**
-   * Creates an instance of UserModel.
-   * @constructor
-   * @param {Object} db - The MongoDB database connection.
+   * Creates an instance of the UserModel.
+   * @param {Object} database - The MongoDB database connection.
    */
-  constructor(db) {
-    this.db = db;
-    this.collection = this.db.collection('users');
+  constructor(database) {
+    this.db = database;
+    this.collectionName = 'users';
+    this.collection = this.db.collection(this.collectionName);
   }
 
   /**
-   * Updates the user profile with the provided name and email.
-   * @param {string} id - The ID of the user.
+   * Updates the user profile with the provided attributes.
+   * @param {string} userId - The ID of the user.
    * @param {string} name - The new name for the user.
    * @param {string} email - The new email address for the user.
-   * @returns {Promise<User>} The updated user object.
+   * @param {string} phone - The new phone number for the user.
+   * @param {number} age - The new age of the user.
+   * @param {string} address - The new address of the user.
+   * @returns {Promise<Object>} The updated user object.
    */
-  async updateProfile(id, name, email) {
+  async updateUser(userId, name, email, phone, age, address) {
     try {
+      // Validate email and phone number formats
+      if (!this.validateEmail(email)) {
+        throw new Error('Invalid email format');
+      }
+
+      if (!this.validatePhone(phone)) {
+        throw new Error('Invalid phone number format');
+      }
+
+      // Update user profile in the database
       const result = await this.collection.updateOne(
-        { _id: id },
-        { $set: { name, email } }
+        { _id: ObjectId(userId) },
+        { $set: { name, email, phone, age, address } }
       );
-      return result.modifiedCount === 1 ? { name, email } : null;
+
+      // Check if user profile was updated successfully
+      return result.modifiedCount === 1 ? { name, email, phone, age, address } : null;
     } catch (error) {
-      throw new Error('Failed to update profile');
+      throw new Error('Failed to update user: ' + error.message);
     }
+  }
+
+  /**
+   * Validates the email format.
+   * @param {string} email - The email address to validate.
+   * @returns {boolean} True if the email is valid, false otherwise.
+   */
+  validateEmail(email) {
+    // Basic email validation using regex
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+
+  /**
+   * Validates the phone number format.
+   * @param {string} phone - The phone number to validate.
+   * @returns {boolean} True if the phone number is valid, false otherwise.
+   */
+  validatePhone(phone) {
+    // Basic phone number validation using regex
+    const phoneRegex = /^\d{10}$/;
+    return phoneRegex.test(phone);
   }
 }
 
