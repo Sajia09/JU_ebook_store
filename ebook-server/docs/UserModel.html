@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: WishlistController</title>
+    <title>JSDoc: Class: UserModel</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: WishlistController</h1>
+    <h1 class="page-title">Class: UserModel</h1>
 
     
 
@@ -28,9 +28,9 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>WishlistController<span class="signature">()</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>UserModel<span class="signature">(database)</span><span class="type-signature"></span></h2>
         
-            <div class="class-description">Controller for managing wishlist operations</div>
+            <div class="class-description">Represents the user model for the E-book store.</div>
         
     
 </header>
@@ -45,19 +45,72 @@
     
 
     
-    <h4 class="name" id="WishlistController"><span class="type-signature"></span>new WishlistController<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="UserModel"><span class="type-signature"></span>new UserModel<span class="signature">(database)</span><span class="type-signature"></span></h4>
     
 
     
 
 
 
+<div class="description">
+    Creates an instance of the UserModel.
+</div>
 
 
 
 
 
 
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>database</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The MongoDB database connection.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -93,7 +146,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_wishlistController.js.html">controllers/wishlistController.js</a>, <a href="controllers_wishlistController.js.html#line6">line 6</a>
+        <a href="models_user.js.html">models/user.js</a>, <a href="models_user.js.html#line6">line 6</a>
     </li></ul></dd>
     
 
@@ -149,7 +202,7 @@
     
 
     
-    <h4 class="name" id="addToWishlist"><span class="type-signature">(async) </span>addToWishlist<span class="signature">(userId, bookId)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Wishlist">Wishlist</a>>}</span></h4>
+    <h4 class="name" id="updateUser"><span class="type-signature">(async) </span>updateUser<span class="signature">(userId, name, email, phone, age, address)</span><span class="type-signature"> &rarr; {Promise.&lt;Object>}</span></h4>
     
 
     
@@ -157,7 +210,7 @@
 
 
 <div class="description">
-    Add a book to the user's wishlist
+    Updates the user profile with the provided attributes.
 </div>
 
 
@@ -209,14 +262,14 @@
 
             
 
-            <td class="description last">User ID</td>
+            <td class="description last">The ID of the user.</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>bookId</code></td>
+                <td class="name"><code>name</code></td>
             
 
             <td class="type">
@@ -232,7 +285,99 @@
 
             
 
-            <td class="description last">Book ID</td>
+            <td class="description last">The new name for the user.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>email</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The new email address for the user.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>phone</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The new phone number for the user.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>age</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The new age of the user.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>address</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The new address of the user.</td>
         </tr>
 
     
@@ -273,7 +418,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_wishlistController.js.html">controllers/wishlistController.js</a>, <a href="controllers_wishlistController.js.html#line21">line 21</a>
+        <a href="models_user.js.html">models/user.js</a>, <a href="models_user.js.html#line27">line 27</a>
     </li></ul></dd>
     
 
@@ -302,7 +447,7 @@
 
         
 <div class="param-desc">
-    - Updated wishlist
+    The updated user object.
 </div>
 
 
@@ -313,7 +458,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Promise.&lt;<a href="global.html#Wishlist">Wishlist</a>></span>
+<span class="param-type">Promise.&lt;Object></span>
 
 
     </dd>
@@ -331,7 +476,7 @@
     
 
     
-    <h4 class="name" id="getWishlist"><span class="type-signature">(async) </span>getWishlist<span class="signature">(userId)</span><span class="type-signature"> &rarr; {Promise.&lt;Array>}</span></h4>
+    <h4 class="name" id="validateEmail"><span class="type-signature"></span>validateEmail<span class="signature">(email)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
     
 
     
@@ -339,7 +484,7 @@
 
 
 <div class="description">
-    Get wishlist of a user
+    Validates the email format.
 </div>
 
 
@@ -375,7 +520,7 @@
 
         <tr>
             
-                <td class="name"><code>userId</code></td>
+                <td class="name"><code>email</code></td>
             
 
             <td class="type">
@@ -391,7 +536,7 @@
 
             
 
-            <td class="description last">User ID</td>
+            <td class="description last">The email address to validate.</td>
         </tr>
 
     
@@ -432,7 +577,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_wishlistController.js.html">controllers/wishlistController.js</a>, <a href="controllers_wishlistController.js.html#line12">line 12</a>
+        <a href="models_user.js.html">models/user.js</a>, <a href="models_user.js.html#line56">line 56</a>
     </li></ul></dd>
     
 
@@ -461,7 +606,7 @@
 
         
 <div class="param-desc">
-    - Array of book ids in the wishlist
+    True if the email is valid, false otherwise.
 </div>
 
 
@@ -472,7 +617,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Promise.&lt;Array></span>
+<span class="param-type">boolean</span>
 
 
     </dd>
@@ -490,7 +635,7 @@
     
 
     
-    <h4 class="name" id="removeFromWishlist"><span class="type-signature">(async) </span>removeFromWishlist<span class="signature">(userId, bookId)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Wishlist">Wishlist</a>>}</span></h4>
+    <h4 class="name" id="validatePhone"><span class="type-signature"></span>validatePhone<span class="signature">(phone)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
     
 
     
@@ -498,7 +643,7 @@
 
 
 <div class="description">
-    Remove a book from the user's wishlist
+    Validates the phone number format.
 </div>
 
 
@@ -534,7 +679,7 @@
 
         <tr>
             
-                <td class="name"><code>userId</code></td>
+                <td class="name"><code>phone</code></td>
             
 
             <td class="type">
@@ -550,30 +695,7 @@
 
             
 
-            <td class="description last">User ID</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>bookId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Book ID</td>
+            <td class="description last">The phone number to validate.</td>
         </tr>
 
     
@@ -614,7 +736,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_wishlistController.js.html">controllers/wishlistController.js</a>, <a href="controllers_wishlistController.js.html#line30">line 30</a>
+        <a href="models_user.js.html">models/user.js</a>, <a href="models_user.js.html#line67">line 67</a>
     </li></ul></dd>
     
 
@@ -643,7 +765,7 @@
 
         
 <div class="param-desc">
-    - Updated wishlist
+    True if the phone number is valid, false otherwise.
 </div>
 
 
@@ -654,7 +776,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Promise.&lt;<a href="global.html#Wishlist">Wishlist</a>></span>
+<span class="param-type">boolean</span>
 
 
     </dd>
