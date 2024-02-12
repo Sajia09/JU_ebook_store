@@ -3,8 +3,6 @@
  * @module __tests__/bookController
  */
 
-
-
 const { searchBooks } = require('../controllers/bookController');
 const Book = require('../models/Book');
 
