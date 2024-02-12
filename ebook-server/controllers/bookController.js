@@ -19,5 +19,4 @@ class BookController {
     res.json(createdBook);
   }
 }
-
 export default new BookController();
