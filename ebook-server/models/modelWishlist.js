@@ -37,18 +37,5 @@ module.exports = {
     );
   },
 
-  /**
-   * Remove a book from the user's wishlist
-   * @param {string} userId - User ID
-   * @param {string} bookId - Book ID
-   * @returns {Promise<Wishlist>} - Updated wishlist
-   */
-  async removeFromWishlist(userId, bookId) {
-    const wishlistCollection = await getWishlistCollection();
-    return wishlistCollection.findOneAndUpdate(
-      { userId },
-      { $pull: { books: bookId } },
-      { returnOriginal: false }
-    );
-  }
+  
 };
