@@ -7,6 +7,10 @@ const { getDb } = require('../utils/database');
  * @property {Array.<string>} books - Array of book ids added to the wishlist
  */
 
+/**
+ * Retrieves the wishlist collection from the database.
+ * @returns {Promise<Collection>} - Wishlist collection
+ */
 const getWishlistCollection = async () => {
   const db = await getDb();
   return db.collection('wishlist');
