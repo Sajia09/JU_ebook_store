@@ -1,17 +1,23 @@
-const Book = require('../models/Book');
+import { getAllBooks as _getAllBooks, getBookById as _getBookById, createBook as _createBook } from '../models/BookModel';
 
-/**
- * Searches for books matching the given search term.
- * @param {string} searchTerm - The search term to match against book titles.
- * @returns {Promise<Array<Object>>} - A promise that resolves with an array of books matching the search term.
- * @throws {Error} If an error occurs while searching for books.
- */
-exports.searchBooks = async (searchTerm) => {
-  try {
-    const regex = new RegExp(searchTerm, 'i');
-    return await Book.find({ title: regex });
-  } catch (error) {
-    console.error('Error searching books:', error);
-    throw error;
+class BookController {
+  async getAllBooks(req, res) {
+    const books = await _getAllBooks();
+    res.json(books);
   }
-};
+
+  async getBookById(req, res) {
+    const { id } = req.params;
+    const book = await _getBookById(id);
+    res.json(book);
+  }
+
+  async createBook(req, res) {
+    const { title, author, description } = req.body;
+    const newBook = { title, author, description, reviews: [] };
+    const createdBook = await _createBook(newBook);
+    res.json(createdBook);
+  }
+}
+
+export default new BookController();
