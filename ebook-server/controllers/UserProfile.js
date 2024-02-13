@@ -20,9 +20,10 @@ class UserController {
    * @param {string} phone - The new phone number for the user.
    * @param {number} age - The new age of the user.
    * @param {string} address - The new address of the user.
+   * @param {string} password - The new password of the user.
    * @returns {Promise<Object>} The updated user object.
    */
-  async updateUser(userId, name, email, phone, age, address) {
+  async updateUser(userId, name, email, phone, age, address, password) {
     try {
       // Validate parameters
       if (!userId) {
@@ -30,6 +31,9 @@ class UserController {
       }
       if (!email) {
         throw new Error('Email is required');
+      }
+      if (!password || password.length < 8) {
+        throw new Error('Password must be at least 8 characters long');
       }
       if (age < 0) {
         throw new Error('Age must be a positive number');
@@ -39,12 +43,13 @@ class UserController {
       }
 
       // Update user profile
-      const updatedUser = await this.userModel.updateUser(userId, name, email, phone, age, address);
+      const updatedUser = await this.userModel.updateUser(userId, name, email, phone, age, address, password);
       return updatedUser;
     } catch (error) {
       throw new Error('Failed to update user: ' + error.message);
     }
   }
+
   /**
    * Validates the format of the phone number.
    * @param {string} phone - The phone number to validate.
