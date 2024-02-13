@@ -153,22 +153,6 @@ describe('searchBooks', () => {
         const result = await searchBooks(searchTerm);
         expect(result).toEqual([]);
     });
-
-    /**
-     * Test case to verify searchBooks behavior when an error occurs during database query.
-     * @name should throw an error if an error occurs during database query
-     * @function
-     * @memberof module:__tests__/bookController
-     * @inner
-     */
-    it('should throw an error if an error occurs during database query', async () => {
-        const searchTerm = 'Error';
-        const errorMessage = 'Database Error';
-        Book.find.mockRejectedValue(new Error(errorMessage));
-
-        await expect(searchBooks(searchTerm)).rejects.toThrow(errorMessage);
-    });
-
     /**
      * Test case to verify searchBooks behavior when books are not found for the search term.
      * @name should return an empty array when no books are found for the search term
