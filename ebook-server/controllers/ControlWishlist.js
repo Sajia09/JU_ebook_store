@@ -1,4 +1,4 @@
-const Wishlist = require('../models/Wishlist');
+const Wishlist = require("../models/Wishlist");
 
 /**
  * Controller for managing wishlist functionality.
@@ -23,9 +23,6 @@ async function getAllBooks() {
  * @returns {Promise<Object>} The added book object.
  */
 async function addToWishlist(book) {
-    if (!book.title || !book.author) {
-        throw new Error('Book title and author are required.');
-    }
     return await Wishlist.create(book);
 }
 
