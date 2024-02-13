@@ -1,5 +1,5 @@
-const WishlistController = require('../controllers/WishlistController');
-const WishlistModel = require('../models/Wishlist');
+const wishlistController = require('F:/Tanzila/ebook-server/controllers/wishlistController.js');
+const modelWishlist = require('F:/Tanzila/ebook-server/models/modelWishlist.js');
 
 jest.mock('../models/Wishlist');
 

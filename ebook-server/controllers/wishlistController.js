@@ -27,6 +27,8 @@ async addToWishlist(userId, bookId) {
    * @param {string} bookId - Book ID
    * @returns {Promise<Wishlist>} - Updated wishlist
    */
-  
+  async removeFromWishlist(userId, bookId) {
+    return await Wishlist.removeFromWishlist(userId, bookId);
+  }
 }
 module.exports = WishlistController;
