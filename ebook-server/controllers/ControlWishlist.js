@@ -1,4 +1,4 @@
-const Wishlist = require('../models/Wishlist');
+const Wishlist = require("../models/Wishlist");
 
 /**
  * Controller for managing wishlist functionality.

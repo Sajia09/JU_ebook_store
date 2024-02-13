@@ -1,34 +1,35 @@
 const Wishlist = require('../models/Wishlist');
 
 /**
- * Controller for managing wishlist operations
+ * Controller for managing wishlist functionality.
+ * @module Controllers/Wishlist
  */
-class WishlistController {
-  /**
-   * Get wishlist of a user
-   * @param {string} userId - User ID
-   * @returns {Promise<Array>} - Array of book ids in the wishlist
-   */
-  async getWishlist(userId) {
-    return await Wishlist.getWishlist(userId);
-  }
+
 /**
-   * Add a book to the user's wishlist
-   * @param {string} userId - User ID
-   * @param {string} bookId - Book ID
-   * @returns {Promise<Wishlist>} - Updated wishlist
-   */
-async addToWishlist(userId, bookId) {
-    return await Wishlist.addToWishlist(userId, bookId);
-  }
-  /**
-   * Remove a book from the user's wishlist
-   * @param {string} userId - User ID
-   * @param {string} bookId - Book ID
-   * @returns {Promise<Wishlist>} - Updated wishlist
-   */
-  async removeFromWishlist(userId, bookId) {
-    return await Wishlist.removeFromWishlist(userId, bookId);
-  }
+ * Get all books in the wishlist.
+ * @function
+ * @name getAllBooks
+ * @returns {Promise<Array>} Array of book objects.
+ */
+async function getAllBooks() {
+    return await Wishlist.find();
 }
-module.exports = WishlistController;
+
+/**
+ * Add a book to the wishlist.
+ * @function
+ * @name addToWishlist
+ * @param {Object} book - Book object to be added to the wishlist.
+ * @returns {Promise<Object>} The added book object.
+ */
+async function addToWishlist(book) {
+    if (!book.title || !book.author) {
+        throw new Error('Book title and author are required.');
+    }
+    return await Wishlist.create(book);
+}
+
+module.exports = {
+    getAllBooks,
+    addToWishlist
+};
