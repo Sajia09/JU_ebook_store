@@ -46,7 +46,7 @@ describe('UserController', () => {
       });
     });
 
-    it('should throw an error if updating user fails', async () => {
+    it(' throw an error if updating user fails', async () => {
       const userId = 'someuserid';
       const name = 'John Doe';
       const email = 'john@example.com';
@@ -92,3 +92,5 @@ describe('UserController', () => {
     });
   });
 });
+
+
