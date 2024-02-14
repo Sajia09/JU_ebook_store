@@ -20,8 +20,8 @@ git clone -b development https://github.com/Sajia09/ju-ebook-store.git
 
 ### Set Up Environment Variables
 #### Create a .env file in the root directory and provide the following environment variables:
-#### PORT=5000
-#### MONGODB_URI=mongodb://localhost:27017
+PORT=5000
+MONGODB_URI=mongodb://localhost:27017
 ```
 PORT=5000
 MONGODB_URI=mongodb://localhost:27017
