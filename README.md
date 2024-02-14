@@ -18,9 +18,20 @@ Clone the project from the development branch using the following command:
 ```bash
 git clone -b development https://github.com/Sajia09/ju-ebook-store.git
 
-cd ju-ebook-store
-npm install
-cd client
-npm install
-cd ..
+
+### Set Up Environment Variables
+# Create a .env file in the root directory and provide the following environment variables:
+# PORT=5000
+# MONGODB_URI=your_mongodb_connection_string
+PORT=5000
+MONGODB_URI=your_mongodb_connection_string
+
+# Start MongoDB Server
+# Ensure that MongoDB is running locally on your machine.
+
+# Run the Server and Client
+# Run the following command to start the server and client simultaneously:
+npm run dev
+# This will start the server at http://localhost:5000 and the React app at http://localhost:3000.
+
 
