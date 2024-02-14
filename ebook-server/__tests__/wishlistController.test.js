@@ -1,8 +1,7 @@
 const wishlistController = require('f:/keya/ebook-server/controllers/wishlistController.js');
-const Wishlist = require("f:/keya/ebook-server/models/Wishlist.js");
+const Wishlist = require("f:/keya/ebook-server/models/wishlist.js");
 
-jest.mock('f:/keya/ebook-server/models/Wishlist');
-
+jest.mock('f:/keya/ebook-server/models/wishlist');
 describe('Wishlist Controller', () => {
     afterEach(() => {
         jest.clearAllMocks();
