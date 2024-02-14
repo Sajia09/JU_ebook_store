@@ -1,6 +1,7 @@
+// reviewRoutes.js file (review route)
 const express = require('express');
 const router = express.Router();
-const ReviewController = require('../controllers/ReviewController');
+import ReviewController from '../controllers/ReviewController';
 
 /**
  * @typedef {object} ExpressRequest
@@ -15,7 +16,7 @@ const ReviewController = require('../controllers/ReviewController');
  */
 
 /**
- * Router for managing review operations
+ * Router for managing review operations.
  * @namespace ReviewRoutes
  */
 
@@ -31,10 +32,10 @@ router.post('/:bookId/reviews', async (req, res) => {
   const { user, rating, content } = req.body;
 
   try {
-    const createdReview = await ReviewController.createReview(bookId, { user, rating, content });
+    await ReviewController.createReview(req, res);
 
-    // Respond with the created review
-    res.json(createdReview);
+    // Respond with a success message
+    res.json({ message: 'Review created successfully' });
   } catch (error) {
     console.error('Error creating review:', error);
     // Handle the error and respond with an error status

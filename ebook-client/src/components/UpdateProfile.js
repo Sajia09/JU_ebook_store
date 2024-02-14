@@ -20,7 +20,7 @@ function UserProfileUpdateForm() {
     e.preventDefault();
     try {
       const userController = new UserController(); // Initialize UserController
-      const updatedUser = await userController.updateUser(userId, name, email, phone, age, address);
+      const updatedUser = await userController.updateUser(userId, name, email, phone, age, address, password);
       console.log('Updated user:', updatedUser);
       // Optionally, you can handle success/failure messages or update UI
     } catch (error) {
