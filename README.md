@@ -1,4 +1,4 @@
-# Ju Ebook Store
+# JU eBook Store
 
 Welcome to Ju Ebook Store project! This is a MERN (MongoDB, Express.js, React.js, Node.js) application for managing an ebook store.
 
