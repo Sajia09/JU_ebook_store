@@ -14,7 +14,7 @@ const wishlistSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    // Add more fields as needed
+    
 });
 
 const Wishlist = mongoose.model('Wishlist', wishlistSchema);
