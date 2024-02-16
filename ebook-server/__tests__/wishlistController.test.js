@@ -1,5 +1,5 @@
-const wishlistController = require('f:/keya/ebook-server/controllers/ControlWishlist.js');
-const Wishlist = require("f:/keya/ebook-server/models/wishlist.js");
+const wishlistController = require('f:/keya/ebook-server/controllers/wishlistController.js');
+const Wishlist = require("f:/keya/ebook-server/models/Wishlist.js");
 
 jest.mock('f:/keya/ebook-server/models/Wishlist');
 
