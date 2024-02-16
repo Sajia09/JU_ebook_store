@@ -1,6 +1,4 @@
 /**
- 
-
 * Controller for book-related operations.
  * @module controllers/bookController
  */
