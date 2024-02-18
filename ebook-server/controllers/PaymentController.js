@@ -13,3 +13,10 @@ const PaymentService = require('../services/PaymentService');
  * @param {Object} order - The order object containing payment details.
  * @returns {Promise<Object>} The payment confirmation.
  */
+async function processPayment(order) {
+    return await PaymentService.processPayment(order);
+}
+
+module.exports = {
+    processPayment
+};
