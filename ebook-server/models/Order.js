@@ -11,6 +11,15 @@ class Order {
         throw error;
       }
     }
+    async getOrderById(orderId) {
+        try {
+          const order = await this.collection.findOne({ _id: orderId });
+          return order;
+        } catch (error) {
+          throw error;
+        }
+      }
+
   
     
   }
