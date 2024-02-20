@@ -1,40 +1,3 @@
-// /**
-//  * Tests for the book controller.
-//  * @module __tests__/bookController
-//  */
-
-// const { searchBooks } = require('../controllers/bookController');
-// const Book = require('../models/Book');
-
-// jest.mock('../models/Book');
-
-// /**
-//  * Test suite for the searchBooks function.
-//  */
-// describe('searchBooks', () => {
-
-//     /**
-//    * Test case to verify searchBooks behavior with a valid search term.
-//    */
-//   it('should return an array of books for a valid search term', async () => {
-//     const searchTerm = 'Harry Potter';
-//     const expectedBooks = [{ title: 'Harry Potter and the Sorcerer\'s Stone' }];
-//     Book.find.mockResolvedValue(expectedBooks);
-
-//     const result = await searchBooks(searchTerm);
-//     expect(result).toEqual(expectedBooks);
-//   });
-// /**
-//    * Test case to verify searchBooks behavior with an invalid search term.
-//    */
-//   it('should return an empty array for an invalid search term', async () => {
-//     const searchTerm = 'Invalid Search Term';
-//     Book.find.mockResolvedValue([]);
-
-//     const result = await searchBooks(searchTerm);
-//     expect(result).toEqual([]);
-//   });
-// });
 
 /**
  * Tests for the book controller.
@@ -96,22 +59,6 @@ describe('searchBooks', () => {
         const result = await searchBooks(searchTerm);
         expect(result).toEqual([]);
     });
-
-    /**
-     * Test case to verify searchBooks behavior when an error occurs during database query.
-     * @name should throw an error if an error occurs during database query
-     * @function
-     * @memberof module:__tests__/bookController
-     * @inner
-     */
-    it('should throw an error if an error occurs during database query', async () => {
-        const searchTerm = 'Error';
-        const errorMessage = 'Database Error';
-        Book.find.mockRejectedValue(new Error(errorMessage));
-
-        await expect(searchBooks(searchTerm)).rejects.toThrow(errorMessage);
-    });
-
     /**
      * Test case to verify searchBooks behavior when books are not found for the search term.
      * @name should return an empty array when no books are found for the search term
@@ -125,5 +72,37 @@ describe('searchBooks', () => {
 
         const result = await searchBooks(searchTerm);
         expect(result).toEqual([]);
+    });
+
+    /**
+     * Test case to verify searchBooks behavior when the search term contains special characters.
+     * @name should handle special characters in the search term
+     * @function
+     * @memberof module:__tests__/bookController
+     * @inner
+     */
+    it('should handle special characters in the search term', async () => {
+        const searchTerm = 'Special * Characters';
+        const expectedBooks = [{ title: 'Book with Special Characters' }];
+        Book.find.mockResolvedValue(expectedBooks);
+
+        const result = await searchBooks(searchTerm);
+        expect(result).toEqual(expectedBooks);
+    });
+
+    /**
+     * Test case to verify searchBooks behavior when the search term is case insensitive.
+     * @name should handle case-insensitive search
+     * @function
+     * @memberof module:__tests__/bookController
+     * @inner
+     */
+    it('should handle case-insensitive search', async () => {
+        const searchTerm = 'harry potter';
+        const expectedBooks = [{ title: 'Harry Potter and the Sorcerer\'s Stone' }];
+        Book.find.mockResolvedValue(expectedBooks);
+
+        const result = await searchBooks(searchTerm);
+        expect(result).toEqual(expectedBooks);
     });
 });

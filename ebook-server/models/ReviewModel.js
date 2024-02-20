@@ -1,32 +1,50 @@
-const { getDb } = require('ebookstore');
+// Review.js file (review model)
+const mongoose = require('mongoose');
 
 /**
+ * Represents a review for a book.
  * @typedef {Object} Review
- * @property {string} bookId - The ID of the associated book
- * @property {string} user - The user providing the review
- * @property {number} rating - The rating given in the review
- * @property {string} content - The content of the review
+ * @property {string} bookId - The ID of the associated book.
+ * @property {string} user - The user providing the review.
+ * @property {number} rating - The rating given in the review.
+ * @property {string} content - The content of the review.
  */
 
 /**
- * Get MongoDB collection for reviews
- * @returns {Promise<import('mongodb').Collection<Review>>} - MongoDB collection for reviews
+ * Mongoose schema for a review.
+ * @type {import('mongoose').Schema}
  */
-const getReviewCollection = async () => {
-  const db = await getDb();
-  return db.collection('reviews');
-};
-
-module.exports = {
+const reviewSchema = new mongoose.Schema({
   /**
-   * Create a new review in the database
-   * @param {string} bookId - The ID of the associated book
-   * @param {Review} review - The review object
-   * @returns {Promise<Review>} - The created review object
+   * The ID of the associated book.
+   * @type {string}
    */
-  async createReview(bookId, review) {
-    const reviewCollection = await getReviewCollection();
-    const result = await reviewCollection.insertOne({ bookId, ...review });
-    return result.ops[0];
+  bookId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Book',
+    required: true,
   },
-};
+  /**
+   * The user providing the review.
+   * @type {string}
+   */
+  user: String,
+  /**
+   * The rating given in the review.
+   * @type {number}
+   */
+  rating: Number,
+  /**
+   * The content of the review.
+   * @type {string}
+   */
+  content: String,
+  // Add more fields as needed
+});
+/**
+ * Mongoose model for a review.
+ * @type {import('mongoose').Model<Review>}
+ */
+const Review = mongoose.model('Review', reviewSchema);
+
+module.exports = Review;

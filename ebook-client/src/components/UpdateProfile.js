@@ -20,7 +20,7 @@ function UserProfileUpdateForm() {
     e.preventDefault();
     try {
       const userController = new UserController(); // Initialize UserController
-      const updatedUser = await userController.updateUser(userId, name, email, phone, age, address);
+      const updatedUser = await userController.updateUser(userId, name, email, phone, age, address, password);
       console.log('Updated user:', updatedUser);
       // Optionally, you can handle success/failure messages or update UI
     } catch (error) {
@@ -35,7 +35,7 @@ function UserProfileUpdateForm() {
       <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Phone" />
       <input type="number" value={age} onChange={(e) => setAge(e.target.value)} placeholder="Age" />
       <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} placeholder="Address" />
-      <button type="submit">Update Profile</button>
+      <button type="submit">Update Your Profile</button>
     </form>
   );
 }
