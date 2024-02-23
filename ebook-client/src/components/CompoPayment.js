@@ -29,4 +29,35 @@ const PaymentForm = () => {
             // Handle error
         }
     };
-    
+    return (
+        <div>
+            <h2>Payment Form</h2>
+            <form onSubmit={handleSubmit}>
+                <div>
+                    <label htmlFor="orderId">Order ID:</label>
+                    <input
+                        type="text"
+                        id="orderId"
+                        name="orderId"
+                        value={formData.orderId}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="amount">Amount:</label>
+                    <input
+                        type="text"
+                        id="amount"
+                        name="amount"
+                        value={formData.amount}
+                        onChange={handleChange}
+                    />
+                </div>
+                {/* Add other fields as needed */}
+                <button type="submit">Pay Now</button>
+            </form>
+        </div>
+    );
+};
+
+export default PaymentForm;
