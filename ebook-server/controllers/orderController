@@ -1,17 +1,43 @@
-const Order = require('../models/Order');
-
+/**
+ * Represents a controller for managing orders.
+ */
 class OrderController {
+  /**
+   * Creates an instance of OrderController.
+   * @param {Object} db - The database connection object.
+   */
   constructor(db) {
+    /**
+     * The order model object.
+     * @type {Order}
+     */
     this.orderModel = new Order(db);
   }
 
+  /**
+   * Tracks an order based on the provided order ID.
+   * @param {Object} req - The request object.
+   * @param {Object} res - The response object.
+   * @returns {Promise<void>} A promise that resolves after processing the request.
+   */
   async trackOrder(req, res) {
     try {
+      /**
+       * The ID of the order to track.
+       * @type {string}
+       */
       const orderId = req.params.id;
+      
+      /**
+       * The order retrieved from the database.
+       * @type {Object}
+       */
       const order = await this.orderModel.getOrderById(orderId);
+      
       if (!order) {
         return res.status(404).json({ error: 'Order not found' });
       }
+      
       res.json(order);
     } catch (error) {
       res.status(500).json({ error: 'Internal Server Error' });
