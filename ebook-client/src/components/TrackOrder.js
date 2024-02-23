@@ -20,7 +20,26 @@ function TrackingOrder() {
       setOrderInfo(null);
     }
   };
-
+  return (
+    <div>
+      <h2>Track Your Order</h2>
+      <input
+        type="text"
+        placeholder="Enter Order ID"
+        value={orderId}
+        onChange={(e) => setOrderId(e.target.value)}
+      />
+      <button onClick={handleTrackOrder}>Track</button>
+      {error && <p>{error}</p>}
+      {orderInfo && (
+        <div>
+          <h3>Order Details</h3>
+          <p>Order ID: {orderInfo._id}</p>
+          {/* Display other order details here */}
+        </div>
+      )}
+    </div>
+  );
   
 }
 
