@@ -19,6 +19,14 @@ mongoose.connect('mongodb://localhost:27017/login_app', {
   useUnifiedTopology: true,
 }).then(() => console.log('MongoDB Connected')).catch(err => console.log(err));
 
+app.use(bodyParser.json());
+app.use('/books', bookRoutes);
+
+mongoose.connect('mongodb://localhost:27017/purchase-book-db', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+
 app.use('/api', authRoutes);
 
 const PORT = process.env.PORT || 5000;
