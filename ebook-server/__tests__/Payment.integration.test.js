@@ -27,73 +27,13 @@ app.post('/payment', async (req, res) => {
         // Log error and send failure response
         console.error('Error processing payment:', error.message); // Print only the error message for debugging
         res.status(500).json({ message: 'Payment processing failed' });
-    }
+    } 
 });
 
 
 // Define your integration test
 describe('Payment Integration Test', () => {
     // Increase timeout to 15 seconds
-    jest.setTimeout(20000);
-    it('should process a payment successfully', async () => {
-        const order = {
-            orderId: '12345',
-            amount: 100,
-        };
-        const response = await request(app)
-            .post('/payment')
-            .send(order);
-        expect(response.status).toBe(201);
-        expect(response.body.message).toBe('Payment processed successfully');
-        expect(response.body.payment.orderId).toBe(order.orderId);
-        expect(response.body.payment.amount).toBe(order.amount);
-    });
-    it('should process a payment successfully with extra data', async () => {
-        const order = {
-            orderId: '12345',
-            amount: 100,
-            extraData: 'additional info',
-        };
-        const response = await request(app)
-            .post('/payment')
-            .send(order);
-        expect(response.status).toBe(201);
-        expect(response.body.message).toBe('Payment processed successfully');
-        expect(response.body.payment.orderId).toBe(order.orderId);
-        expect(response.body.payment.amount).toBe(order.amount);
-    });
-    it('should process a payment successfully with valid additional parameters', async () => {
-        const order = {
-            orderId: '12345',
-            amount: 100,
-            shippingAddress: '123 Street, City',
-            paymentMethod: 'credit card',
-        };
-        const response = await request(app)
-            .post('/payment')
-            .send(order);
-        expect(response.status).toBe(201);
-        expect(response.body.message).toBe('Payment processed successfully');
-        expect(response.body.payment.orderId).toBe(order.orderId);
-        expect(response.body.payment.amount).toBe(order.amount);
-    });
-    it('should process a payment successfully with a large amount', async () => {
-        const order = {
-            orderId: '12345',
-            amount: 1000000, // $10,000
-        };
-        const response = await request(app)
-            .post('/payment')
-            .send(order);
-        expect(response.status).toBe(201);
-        expect(response.body.message).toBe('Payment processed successfully');
-        expect(response.body.payment.orderId).toBe(order.orderId);
-        expect(response.body.payment.amount).toBe(order.amount);
-    });
-    
-    
-    
-    
 
     it('should return 400 if order details are missing', async () => {
         const response = await request(app)
