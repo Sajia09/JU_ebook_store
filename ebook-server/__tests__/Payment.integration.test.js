@@ -5,7 +5,7 @@ const Payment = require('f:/keya/ebook-server/models/PaymentModel.js');
 // Create an instance of Express
 const app = express();
 
-// Define your routes
+// Define the routes
 app.use(express.json()); // Middleware to parse JSON bodies
 
 app.post('/payment', async (req, res) => {
@@ -31,9 +31,9 @@ app.post('/payment', async (req, res) => {
 });
 
 
-// Define your integration test
+// Define payment integration test
 describe('Payment Integration Test', () => {
-    // Increase timeout to 15 seconds
+    
 
     it('should return 400 if order details are missing', async () => {
         const response = await request(app)
