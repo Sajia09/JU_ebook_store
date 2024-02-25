@@ -1,48 +1,25 @@
+const Order = require('D:/CSE/4 Fourth Year/4-2/SQA PROJECT/Orthi/JU_ebook_store/ebook-server/models/Order.js');
+
 /**
- * Represents a controller for managing orders.
+ * Controller for managing orders.
  */
 class OrderController {
-  /**
-   * Creates an instance of OrderController.
-   * @param {Object} db - The database connection object.
-   */
-  constructor(db) {
     /**
-     * The order model object.
-     * @type {Order}
+     * Retrieves the status of an order based on the provided orderId.
+     * @param {string} orderId - The unique identifier of the order to track.
+     * @returns {Promise<{success: boolean, order?: Order, message?: string}>} An object indicating the success status along with the order details or an error message.
      */
-    this.orderModel = new Order(db);
-  }
-
-  /**
-   * Tracks an order based on the provided order ID.
-   * @param {Object} req - The request object.
-   * @param {Object} res - The response object.
-   * @returns {Promise<void>} A promise that resolves after processing the request.
-   */
-  async trackOrder(req, res) {
-    try {
-      /**
-       * The ID of the order to track.
-       * @type {string}
-       */
-      const orderId = req.params.id;
-      
-      /**
-       * The order retrieved from the database.
-       * @type {Object}
-       */
-      const order = await this.orderModel.getOrderById(orderId);
-      
-      if (!order) {
-        return res.status(404).json({ error: 'Order not found' });
-      }
-      
-      res.json(order);
-    } catch (error) {
-      res.status(500).json({ error: 'Internal Server Error' });
+    async trackOrder(orderId) {
+        try {
+            const order = await Order.findOne({ orderId });
+            if (!order) {
+                return { success: false, message: 'Order not found' };
+            }
+            return { success: true, order };
+        } catch (error) {
+            return { success: false, message: 'Error tracking order' };
+        }
     }
-  }
 }
 
 module.exports = OrderController;
