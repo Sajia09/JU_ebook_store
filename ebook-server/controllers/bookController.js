@@ -31,6 +31,16 @@ const Book = require('../models/Book');
  * @param {number} price - The price of the book to be purchased.
  * @returns {Promise<object>} A Promise that resolves with the purchased book object.
  */
+exports.searchBooks = async (searchTerm) => {
+  try {
+    const regex = new RegExp(searchTerm, 'i');
+    return await Book.find({ title: regex });
+  } 
+  catch (error) {
+    console.error('Error searching books:', error);
+    throw error;
+  }
+};
 async function purchaseBook(title, author, price) {
     const newBook = new Book({
         title,
