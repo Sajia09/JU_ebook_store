@@ -1,0 +1,25 @@
+const Order = require('D:/CSE/4 Fourth Year/4-2/SQA PROJECT/Orthi/JU_ebook_store/ebook-server/models/Order.js');
+
+/**
+ * Controller for managing orders.
+ */
+class OrderController {
+    /**
+     * Retrieves the status of an order based on the provided orderId.
+     * @param {string} orderId - The unique identifier of the order to track.
+     * @returns {Promise<{success: boolean, order?: Order, message?: string}>} An object indicating the success status along with the order details or an error message.
+     */
+    async trackOrder(orderId) {
+        try {
+            const order = await Order.findOne({ orderId });
+            if (!order) {
+                return { success: false, message: 'Order not found' };
+            }
+            return { success: true, order };
+        } catch (error) {
+            return { success: false, message: 'Error tracking order' };
+        }
+    }
+}
+
+module.exports = OrderController;
