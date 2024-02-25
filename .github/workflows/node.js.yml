@@ -25,7 +25,7 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'npm@5'
+        cache: 'npm'
         cache-dependency-path: ./ebook-client/package-lock.json
     - run: npm@5 ci
     - run: npm@5 run build --if-present
