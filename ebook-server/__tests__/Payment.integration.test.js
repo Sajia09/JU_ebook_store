@@ -44,7 +44,7 @@ describe('Payment Integration Test', () => {
         const response = await request(app)
             .post('/payment')
             .send({}); // Empty request body
-        expect(response.status).toBe(400);
+        expect(response.status).toBe(400);// Expecting status code 400 for missing order details
         expect(response.body.message).toBe('Order details are missing');
     });
 
@@ -58,7 +58,7 @@ describe('Payment Integration Test', () => {
         const response = await request(app)
             .post('/payment')
             .send(order);
-        expect(response.status).toBe(500);
+        expect(response.status).toBe(500);// Expecting status code 500 for failing payment processing
         expect(response.body.message).toBe('Payment processing failed');
     });
     it('should return 201 and a success message on successful payment processing', async () => {
@@ -85,7 +85,7 @@ describe('Payment Integration Test', () => {
         const response = await request(app)
             .post('/payment')
             .send(order);
-        expect(response.status).toBe(400);
+        expect(response.status).toBe(400);// Expecting status code 201 for amount is not a number
         expect(response.body.message).toBe('Amount must be a number');
     });
    
