@@ -5,9 +5,9 @@ name: orthi.js CI
 
 on:
   push:
-    branches: [ "orthi" ]
+    branches: [ "tanzila" ]
   pull_request:
-    branches: [ "orthi" ]
+    branches: [ "tanzila" ]
 
 jobs:
   build:
