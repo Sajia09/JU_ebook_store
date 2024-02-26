@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: routes/authRoutes.js</title>
+    <title>JSDoc: Source: controllers/ReviewController.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: routes/authRoutes.js</h1>
+    <h1 class="page-title">Source: controllers/ReviewController.js</h1>
 
     
 
@@ -26,26 +26,38 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * Routes for authentication-related operations.
- * @module routes/authRoutes
+            <pre class="prettyprint source linenums"><code>// ReviewController.js file (review controller)
+import { createReview as _createReview } from '../models/ReviewModel';
+import { getBookById as _getBookById } from '../models/Book';
+
+/**
+ * Controller for managing review operations.
  */
+class ReviewController {
+  /**
+   * Create a new review for a book.
+   * @param {object} req - Express request object
+   * @param {object} res - Express response object
+   * @returns {Promise&lt;void>} - Promise representing the operation completion
+   */
+  async createReview(req, res) {
+    const { bookId } = req.params;
+    const { user, rating, content } = req.body;
 
-const express = require('express');
-const router = express.Router();
-const authController = require('../controllers/authController');
+    try {
+      const createdReview = await _createReview(bookId, { user, rating, content });
 
-router.post('/login', async (req, res) => {
-  const { email, password, userType } = req.body;
-  try {
-    const token = await authController.login(email, password, userType);
-    res.json({ token });
-  } catch (error) {
-    res.status(401).json({ message: error.message });
+      // Respond with the created review
+      res.json(createdReview);
+    } catch (error) {
+      console.error('Error creating review:', error);
+      // Handle the error and respond with an error status
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
   }
-});
+}
 
-module.exports = router;
+export default new ReviewController();
 </code></pre>
         </article>
     </section>

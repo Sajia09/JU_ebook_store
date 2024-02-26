@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: routes/authRoutes.js</title>
+    <title>JSDoc: Source: routes/PaymentRoute.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: routes/authRoutes.js</h1>
+    <h1 class="page-title">Source: routes/PaymentRoute.js</h1>
 
     
 
@@ -27,26 +27,33 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * Routes for authentication-related operations.
- * @module routes/authRoutes
+ * Routes for payment functionality.
+ * @module Routes/PaymentRoutes
  */
 
 const express = require('express');
 const router = express.Router();
-const authController = require('../controllers/authController');
+const PaymentController = require('../controllers/PaymentController');
 
-router.post('/login', async (req, res) => {
-  const { email, password, userType } = req.body;
-  try {
-    const token = await authController.login(email, password, userType);
-    res.json({ token });
-  } catch (error) {
-    res.status(401).json({ message: error.message });
-  }
+/**
+ * POST request to process payment for an order.
+ * @name POST/api/payment
+ * @function
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ * @returns {Object} The payment confirmation.
+ */
+router.post('/payment', async (req, res) => {
+    try {
+        const order = req.body; // Assuming the order details are sent in the request body
+        const paymentConfirmation = await PaymentController.processPayment(order);
+        res.json(paymentConfirmation);
+    } catch (error) {
+        res.status(500).json({ message: 'Failed to process payment' });
+    }
 });
 
-module.exports = router;
-</code></pre>
+module.exports = router;</code></pre>
         </article>
     </section>
 

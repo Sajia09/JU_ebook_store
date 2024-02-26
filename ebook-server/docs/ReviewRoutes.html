@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: UserModel</title>
+    <title>JSDoc: Namespace: ReviewRoutes</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: UserModel</h1>
+    <h1 class="page-title">Namespace: ReviewRoutes</h1>
 
     
 
@@ -28,9 +28,7 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>UserModel<span class="signature">(database)</span><span class="type-signature"></span></h2>
-        
-            <div class="class-description">Represents the user model for the E-book store.</div>
+        <h2>ReviewRoutes</h2>
         
     
 </header>
@@ -39,22 +37,86 @@
     <div class="container-overview">
     
         
+            <div class="description">Router for managing review operations.</div>
+        
+
+        
+
+
+<dl class="details">
 
     
-    <h2>Constructor</h2>
-    
 
-    
-    <h4 class="name" id="UserModel"><span class="type-signature"></span>new UserModel<span class="signature">(database)</span><span class="type-signature"></span></h4>
     
 
     
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="routes_reviewRoutes.js.html">routes/reviewRoutes.js</a>, <a href="routes_reviewRoutes.js.html#line18">line 18</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
 
 
-<div class="description">
-    Creates an instance of the UserModel.
-</div>
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".POST/api/books/:bookId/reviews"><span class="type-signature">(static) </span>POST /api/books/:bookId/reviews<span class="signature">(req, res)</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span></h4>
+    
+
+    
+
+
 
 
 
@@ -89,13 +151,13 @@
 
         <tr>
             
-                <td class="name"><code>database</code></td>
+                <td class="name"><code>req</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type"><a href="global.html#ExpressRequest">ExpressRequest</a></span>
 
 
             
@@ -105,7 +167,30 @@
 
             
 
-            <td class="description last">The MongoDB database connection.</td>
+            <td class="description last">Express request object</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>res</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#ExpressResponse">ExpressResponse</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Express response object</td>
         </tr>
 
     
@@ -146,7 +231,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_user.js.html">models/user.js</a>, <a href="models_user.js.html#line6">line 6</a>
+        <a href="routes_reviewRoutes.js.html">routes/reviewRoutes.js</a>, <a href="routes_reviewRoutes.js.html#line23">line 23</a>
     </li></ul></dd>
     
 
@@ -171,28 +256,34 @@
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - Promise representing the operation completion
+</div>
 
 
 
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;void></span>
 
+
+    </dd>
+</dl>
 
     
-    </div>
 
-    
 
-    
 
-    
 
-    
 
-    
-
-    
-
-    
-
+        
     
 
     

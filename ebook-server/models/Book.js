@@ -10,7 +10,7 @@ const mongoose = require('mongoose');
 
 /**
  * Mongoose schema for a book.
- * @type {import('mongoose').Schema}
+ * @type {import('mongoose').Schema<any>}
  */
 const bookSchema = new mongoose.Schema({
   /**
@@ -33,9 +33,8 @@ const bookSchema = new mongoose.Schema({
 
 /**
  * Mongoose model for a book.
- * @type {import('mongoose').Model<Book>}
+ * @type {import('mongoose').Model<Book, {}>}
  */
 const Book = mongoose.model('Book', bookSchema);
 
 module.exports = Book;
-

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: routes/authRoutes.js</title>
+    <title>JSDoc: Source: routes/reviewRoutes.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: routes/authRoutes.js</h1>
+    <h1 class="page-title">Source: routes/reviewRoutes.js</h1>
 
     
 
@@ -26,22 +26,48 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * Routes for authentication-related operations.
- * @module routes/authRoutes
- */
-
+            <pre class="prettyprint source linenums"><code>// reviewRoutes.js file (review route)
 const express = require('express');
 const router = express.Router();
-const authController = require('../controllers/authController');
+import ReviewController from '../controllers/ReviewController';
 
-router.post('/login', async (req, res) => {
-  const { email, password, userType } = req.body;
+/**
+ * @typedef {object} ExpressRequest
+ * @property {object} params - Parameters from the URL
+ * @property {object} body - The body of the request
+ */
+
+/**
+ * @typedef {object} ExpressResponse
+ * @property {(status: number) => ExpressResponse} status - Set the status code of the response
+ * @property {(data: object) => void} json - Send a JSON response
+ */
+
+/**
+ * Router for managing review operations.
+ * @namespace ReviewRoutes
+ */
+
+/**
+ * @function POST /api/books/:bookId/reviews
+ * @memberof ReviewRoutes
+ * @param {ExpressRequest} req - Express request object
+ * @param {ExpressResponse} res - Express response object
+ * @returns {Promise&lt;void>} - Promise representing the operation completion
+ */
+router.post('/:bookId/reviews', async (req, res) => {
+  const { bookId } = req.params;
+  const { user, rating, content } = req.body;
+
   try {
-    const token = await authController.login(email, password, userType);
-    res.json({ token });
+    await ReviewController.createReview(req, res);
+
+    // Respond with a success message
+    res.json({ message: 'Review created successfully' });
   } catch (error) {
-    res.status(401).json({ message: error.message });
+    console.error('Error creating review:', error);
+    // Handle the error and respond with an error status
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 });
 

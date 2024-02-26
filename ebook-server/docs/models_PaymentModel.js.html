@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: routes/authRoutes.js</title>
+    <title>JSDoc: Source: models/PaymentModel.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: routes/authRoutes.js</h1>
+    <h1 class="page-title">Source: models/PaymentModel.js</h1>
 
     
 
@@ -27,26 +27,20 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * Routes for authentication-related operations.
- * @module routes/authRoutes
+ * Mongoose schema for Payment.
+ * @module Models/Payment
  */
 
-const express = require('express');
-const router = express.Router();
-const authController = require('../controllers/authController');
+const mongoose = require('mongoose');
 
-router.post('/login', async (req, res) => {
-  const { email, password, userType } = req.body;
-  try {
-    const token = await authController.login(email, password, userType);
-    res.json({ token });
-  } catch (error) {
-    res.status(401).json({ message: error.message });
-  }
+const paymentSchema = new mongoose.Schema({
+    // Define schema fields for payment
+    // Example: orderId, paymentStatus, amount, paymentDate, etc.
 });
 
-module.exports = router;
-</code></pre>
+const Payment = mongoose.model('Payment', paymentSchema);
+
+module.exports = Payment;</code></pre>
         </article>
     </section>
 

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: routes/authRoutes.js</title>
+    <title>JSDoc: Source: models/Order.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: routes/authRoutes.js</h1>
+    <h1 class="page-title">Source: models/Order.js</h1>
 
     
 
@@ -26,26 +26,31 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * Routes for authentication-related operations.
- * @module routes/authRoutes
+            <pre class="prettyprint source linenums"><code>const mongoose = require('mongoose');
+
+/**
+ * Represents an order in the system.
+ * @typedef {Object} Order
+ * @property {string} orderId - The unique identifier for the order.
+ * @property {string} status - The status of the order.
  */
 
-const express = require('express');
-const router = express.Router();
-const authController = require('../controllers/authController');
-
-router.post('/login', async (req, res) => {
-  const { email, password, userType } = req.body;
-  try {
-    const token = await authController.login(email, password, userType);
-    res.json({ token });
-  } catch (error) {
-    res.status(401).json({ message: error.message });
-  }
+const orderSchema = new mongoose.Schema({
+    orderId: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    status: {
+        type: String,
+        enum: ['pending', 'processed', 'shipped', 'delivered'],
+        default: 'pending'
+    }
 });
 
-module.exports = router;
+const Order = mongoose.model('Order', orderSchema);
+
+module.exports = Order;
 </code></pre>
         </article>
     </section>

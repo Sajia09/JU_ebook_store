@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: routes/authRoutes.js</title>
+    <title>JSDoc: Source: controllers/PaymentController.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: routes/authRoutes.js</h1>
+    <h1 class="page-title">Source: controllers/PaymentController.js</h1>
 
     
 
@@ -27,26 +27,47 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * Routes for authentication-related operations.
- * @module routes/authRoutes
+ * Controller for managing payment functionality.
+ * @module Controllers/PaymentController
  */
 
-const express = require('express');
-const router = express.Router();
-const authController = require('../controllers/authController');
+const Payment = require('f:/keya/ebook-server/models/PaymentModel.js');
 
-router.post('/login', async (req, res) => {
-  const { email, password, userType } = req.body;
-  try {
-    const token = await authController.login(email, password, userType);
-    res.json({ token });
-  } catch (error) {
-    res.status(401).json({ message: error.message });
-  }
-});
+/**
+ * Process payment for an order.
+ * @function
+ * @name processPayment
+ * @param {Object} order - The order object containing payment details.
+ * @returns {Promise&lt;Object>} The payment confirmation.
+ */
+async function processPayment(order) {
+    try {
+        // Implement payment processing logic here
+        // For example, saving payment details to the database
+        const paymentDetails = {
+            orderId: order.orderId,
+            amount: order.amount,
+           
+        };
 
-module.exports = router;
-</code></pre>
+        // Save payment details to the database
+        const payment = await Payment.create(paymentDetails);
+
+        // Return payment confirmation
+        return {
+            success: true,
+            message: 'Payment processed successfully',
+            payment: payment
+        };
+    } catch (error) {
+        // Handle any errors during payment processing
+        throw new Error('Failed to process payment: ' + error.message);
+    }
+}
+
+module.exports = {
+    processPayment
+};</code></pre>
         </article>
     </section>
 

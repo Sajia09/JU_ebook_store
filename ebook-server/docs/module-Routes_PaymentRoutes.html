@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: UserModel</title>
+    <title>JSDoc: Module: Routes/PaymentRoutes</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: UserModel</h1>
+    <h1 class="page-title">Module: Routes/PaymentRoutes</h1>
 
     
 
@@ -28,24 +28,87 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>UserModel<span class="signature">(database)</span><span class="type-signature"></span></h2>
-        
-            <div class="class-description">Represents the user model for the E-book store.</div>
-        
-    
 </header>
 
 <article>
     <div class="container-overview">
     
         
+            <div class="description">Routes for payment functionality.</div>
+        
+
+        
+
+
+<dl class="details">
 
     
-    <h2>Constructor</h2>
+
     
 
     
-    <h4 class="name" id="UserModel"><span class="type-signature"></span>new UserModel<span class="signature">(database)</span><span class="type-signature"></span></h4>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="routes_PaymentRoute.js.html">routes/PaymentRoute.js</a>, <a href="routes_PaymentRoute.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~POST/api/payment"><span class="type-signature">(inner) </span>POST/api/payment<span class="signature">(req, res)</span><span class="type-signature"> &rarr; {Object}</span></h4>
     
 
     
@@ -53,7 +116,7 @@
 
 
 <div class="description">
-    Creates an instance of the UserModel.
+    POST request to process payment for an order.
 </div>
 
 
@@ -89,7 +152,7 @@
 
         <tr>
             
-                <td class="name"><code>database</code></td>
+                <td class="name"><code>req</code></td>
             
 
             <td class="type">
@@ -105,7 +168,30 @@
 
             
 
-            <td class="description last">The MongoDB database connection.</td>
+            <td class="description last">The request object.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>res</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The response object.</td>
         </tr>
 
     
@@ -146,7 +232,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_user.js.html">models/user.js</a>, <a href="models_user.js.html#line6">line 6</a>
+        <a href="routes_PaymentRoute.js.html">routes/PaymentRoute.js</a>, <a href="routes_PaymentRoute.js.html#line10">line 10</a>
     </li></ul></dd>
     
 
@@ -171,28 +257,34 @@
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    The payment confirmation.
+</div>
 
 
 
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
 
+
+    </dd>
+</dl>
 
     
-    </div>
 
-    
 
-    
 
-    
 
-    
 
-    
-
-    
-
-    
-
+        
     
 
     
