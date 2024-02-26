@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [20.9.0]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -27,6 +27,11 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
         cache-dependency-path: ./ebook-client/package-lock.json
+    - run: npm install --legacy-peer-deps
+      working-directory: ./ebook-client
     - run: npm ci
+      working-directory: ./ebook-client
     - run: npm run build --if-present
+      working-directory: ./ebook-client
     - run: npm run dev
+      working-directory: ./ebook-client
