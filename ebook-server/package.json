@@ -1,3 +1,4 @@
+
 {
   "name": "ebook-server",
   "type": "module",
@@ -5,9 +6,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "nodemon index.js",
     "docs": "jsdoc -d docs --configure jsdocConf.json"
+
   },
   "author": "",
   "license": "ISC",
@@ -19,6 +21,7 @@
     "mongoose": "^8.1.2",
     "nodemon": "^3.0.3"
   },
+  
   "jest": {
     "coveragePathIgnorePatterns": [
       "/node_modules/",
@@ -30,4 +33,6 @@
     "jsdoc": "^4.0.2",
     "supertest": "^6.3.4"
   }
+  
 }
+
