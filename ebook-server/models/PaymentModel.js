@@ -48,7 +48,7 @@ const paymentSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     }
-    // You can add more fields as per your requirement
+    
 });
 
 /**
