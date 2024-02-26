@@ -32,4 +32,6 @@ jobs:
     - run: npm ci
       working-directory: ./ebook-client
     - run: npm run build --if-present
+      working-directory: ./ebook-client
     - run: npm run dev
+      working-directory: ./ebook-client
