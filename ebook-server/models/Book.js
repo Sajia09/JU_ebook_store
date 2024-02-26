@@ -17,23 +17,23 @@ const bookSchema = new mongoose.Schema({
    * The title of the book.
    * @type {string}
    */
-  title: String,
+  title: { type: String },
   /**
    * The author of the book.
    * @type {string}
    */
-  author: String,
+  author: { type: String },
   /**
    * The genre of the book.
    * @type {string}
    */
-  genre: String,
+  genre: { type: String },
   // Add more fields as needed
 });
 
 /**
  * Mongoose model for a book.
- * @type {import('mongoose').Model<Book, {}>}
+ * @type {import('mongoose').Model<Book>}
  */
 const Book = mongoose.model('Book', bookSchema);
 
