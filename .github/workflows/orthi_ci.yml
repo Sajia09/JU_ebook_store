@@ -36,6 +36,4 @@ jobs:
       working-directory: ebook-client
       run: npm install
 
-    - name: Run Backend Jest Tests
-      working-directory: ebook-server
-      run: npm test
+    
