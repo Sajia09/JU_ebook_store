@@ -27,11 +27,12 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
         cache-dependency-path: ./ebook-client/package-lock.json
+    - run: git config --global url."git@github.com:".insteadOf git://github.com/
     - run: npm install --legacy-peer-deps
       working-directory: ./ebook-client
     - run: npm ci
       working-directory: ./ebook-client
     - run: npm run build --if-present
       working-directory: ./ebook-client
-    - run: git config --global url."git@github.com:".insteadOf git://github.com/ && npm run dev
+    - run: npm run dev
       working-directory: ./ebook-client
