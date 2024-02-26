@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: UserModel</title>
+    <title>JSDoc: Module: Controllers/Wishlist</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: UserModel</h1>
+    <h1 class="page-title">Module: Controllers/Wishlist</h1>
 
     
 
@@ -28,24 +28,87 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>UserModel<span class="signature">(database)</span><span class="type-signature"></span></h2>
-        
-            <div class="class-description">Represents the user model for the E-book store.</div>
-        
-    
 </header>
 
 <article>
     <div class="container-overview">
     
         
+            <div class="description">Controller for managing wishlist functionality.</div>
+        
+
+        
+
+
+<dl class="details">
 
     
-    <h2>Constructor</h2>
+
     
 
     
-    <h4 class="name" id="UserModel"><span class="type-signature"></span>new UserModel<span class="signature">(database)</span><span class="type-signature"></span></h4>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="controllers_ControlWishlist.js.html">controllers/ControlWishlist.js</a>, <a href="controllers_ControlWishlist.js.html#line3">line 3</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~addToWishlist"><span class="type-signature">(inner) </span>addToWishlist<span class="signature">(book)</span><span class="type-signature"> &rarr; {Promise.&lt;Object>}</span></h4>
     
 
     
@@ -53,7 +116,7 @@
 
 
 <div class="description">
-    Creates an instance of the UserModel.
+    Add a book to the wishlist.
 </div>
 
 
@@ -89,7 +152,7 @@
 
         <tr>
             
-                <td class="name"><code>database</code></td>
+                <td class="name"><code>book</code></td>
             
 
             <td class="type">
@@ -105,7 +168,7 @@
 
             
 
-            <td class="description last">The MongoDB database connection.</td>
+            <td class="description last">Book object to be added to the wishlist.</td>
         </tr>
 
     
@@ -146,7 +209,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_user.js.html">models/user.js</a>, <a href="models_user.js.html#line6">line 6</a>
+        <a href="controllers_ControlWishlist.js.html">controllers/ControlWishlist.js</a>, <a href="controllers_ControlWishlist.js.html#line18">line 18</a>
     </li></ul></dd>
     
 
@@ -171,13 +234,63 @@
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    The added book object.
+</div>
 
 
 
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;Object></span>
 
+
+    </dd>
+</dl>
 
     
-    </div>
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~getAllBooks"><span class="type-signature">(inner) </span>getAllBooks<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;Array>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Get all books in the wishlist.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
 
     
 
@@ -193,6 +306,72 @@
 
     
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="controllers_ControlWishlist.js.html">controllers/ControlWishlist.js</a>, <a href="controllers_ControlWishlist.js.html#line8">line 8</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Array of book objects.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;Array></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
     
 
     

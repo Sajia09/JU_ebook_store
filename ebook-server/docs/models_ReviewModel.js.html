@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: models/ReviewModel.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,68 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: models/ReviewModel.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// Review.js file (review model)
+const mongoose = require('mongoose');
 
+/**
+ * Represents a review for a book.
+ * @typedef {Object} Review
+ * @property {string} bookId - The ID of the associated book.
+ * @property {string} user - The user providing the review.
+ * @property {number} rating - The rating given in the review.
+ * @property {string} content - The content of the review.
+ */
 
-    <h3> </h3>
+/**
+ * Mongoose schema for a review.
+ * @type {import('mongoose').Schema}
+ */
+const reviewSchema = new mongoose.Schema({
+  /**
+   * The ID of the associated book.
+   * @type {string}
+   */
+  bookId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Book',
+    required: true,
+  },
+  /**
+   * The user providing the review.
+   * @type {string}
+   */
+  user: String,
+  /**
+   * The rating given in the review.
+   * @type {number}
+   */
+  rating: Number,
+  /**
+   * The content of the review.
+   * @type {string}
+   */
+  content: String,
+  // Add more fields as needed
+});
+/**
+ * Mongoose model for a review.
+ * @type {import('mongoose').Model&lt;Review>}
+ */
+const Review = mongoose.model('Review', reviewSchema);
 
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+module.exports = Review;
+</code></pre>
+        </article>
+    </section>
 
 
 

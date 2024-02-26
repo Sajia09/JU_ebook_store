@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: models/cartBookModel.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,35 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: models/cartBookModel.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const mongoose = require('mongoose');
 
+/**
+ * @typedef {Object} Book
+ * @property {string} title - The title of the book.
+ * @property {string} author - The author of the book.
+ * @property {number} price - The price of the book.
+ */
 
-    <h3> </h3>
+const bookSchema = new mongoose.Schema({
+  title: { type: String, required: true },
+  author: { type: String, required: true },
+  price: { type: Number, required: true },
+});
 
+const Book = mongoose.model('Book', bookSchema);
 
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+module.exports = Book;</code></pre>
+        </article>
+    </section>
 
 
 

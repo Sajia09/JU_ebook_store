@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: models/Book.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,59 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: models/Book.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const mongoose = require('mongoose');
 
+/**
+ * Represents a book.
+ * @typedef {Object} Book
+ * @property {string} title - The title of the book.
+ * @property {string} author - The author of the book.
+ * @property {string} genre - The genre of the book.
+ */
 
-    <h3> </h3>
+/**
+ * Mongoose schema for a book.
+ * @type {import('mongoose').Schema}
+ */
+const bookSchema = new mongoose.Schema({
+  /**
+   * The title of the book.
+   * @type {string}
+   */
+  title: String,
+  /**
+   * The author of the book.
+   * @type {string}
+   */
+  author: String,
+  /**
+   * The genre of the book.
+   * @type {string}
+   */
+  genre: String,
+  // Add more fields as needed
+});
 
+/**
+ * Mongoose model for a book.
+ * @type {import('mongoose').Model&lt;Book>}
+ */
+const Book = mongoose.model('Book', bookSchema);
 
+module.exports = Book;
 
-
-
-
-
-
-
-
-    
-
-
-
-
-
+</code></pre>
+        </article>
+    </section>
 
 
 

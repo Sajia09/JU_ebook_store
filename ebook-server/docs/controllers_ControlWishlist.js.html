@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: controllers/ControlWishlist.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,50 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: controllers/ControlWishlist.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const Wishlist = require("f:/keya/ebook-server/models/wishlist.js");
 
+/**
+ * Controller for managing wishlist functionality.
+ * @module Controllers/Wishlist
+ */
 
-    <h3> </h3>
+/**
+ * Get all books in the wishlist.
+ * @function
+ * @name getAllBooks
+ * @returns {Promise&lt;Array>} Array of book objects.
+ */
+async function getAllBooks() {
+    return await Wishlist.find();
+}
 
+/**
+ * Add a book to the wishlist.
+ * @function
+ * @name addToWishlist
+ * @param {Object} book - Book object to be added to the wishlist.
+ * @returns {Promise&lt;Object>} The added book object.
+ */
+async function addToWishlist(book) {
+    return await Wishlist.create(book);
+}
 
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+module.exports = {
+    getAllBooks,
+    addToWishlist
+};
+</code></pre>
+        </article>
+    </section>
 
 
 
