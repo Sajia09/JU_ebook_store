@@ -34,5 +34,3 @@ jobs:
       working-directory: ./ebook-client
     - run: npm run build --if-present
       working-directory: ./ebook-client
-    - run: npm run dev -- --host
-      working-directory: ./ebook-client
