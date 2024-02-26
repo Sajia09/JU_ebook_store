@@ -32,6 +32,9 @@
     "jest": "^29.7.0",
     "jsdoc": "^4.0.2",
     "supertest": "^6.3.4"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "4.6.1"
   }
   
 }
