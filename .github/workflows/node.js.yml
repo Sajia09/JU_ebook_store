@@ -28,6 +28,7 @@ jobs:
         cache: 'npm'
         cache-dependency-path: ./ebook-client/package-lock.json
     - run: npm install --legacy-peer-deps
+      working-directory: ./ebook-client
     - run: npm ci
     - run: npm run build --if-present
     - run: npm run dev
