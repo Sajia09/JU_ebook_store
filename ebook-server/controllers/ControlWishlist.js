@@ -1,4 +1,4 @@
-const Wishlist = require("f:/keya/ebook-server/models/wishlist.js");
+const Wishlist = require("D:/CSE/4 Fourth Year/4-2/SQA PROJECT/Orthi/JU_ebook_store/ebook-server/models/wishlist.js");
 
 /**
  * Controller for managing wishlist functionality.

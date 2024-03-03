@@ -1,4 +1,8 @@
+/**
+ * Module dependencies.
+ */
 const request = require('supertest');
+
 const express = require('express');
 const Order = require('D:/CSE/4 Fourth Year/4-2/SQA PROJECT/Orthi/JU_ebook_store/ebook-server/models/Order.js'); // Assuming this is the correct path to your Order model
 
@@ -8,6 +12,11 @@ const app = express();
 // Define the routes
 app.use(express.json()); // Middleware to parse JSON bodies
 
+/**
+ * Route to track order by order ID.
+ * @param {string} req.params.orderId - The ID of the order to track.
+ * @returns {JSON} Response containing the message and order details.
+ */
 app.get('/api/trackOrder/:orderId', async (req, res) => {
     try {
         const { orderId } = req.params;
@@ -26,8 +35,9 @@ app.get('/api/trackOrder/:orderId', async (req, res) => {
 
 // Define track order integration test
 describe('Track Order Integration Test', () => {
-    
-
+    /**
+     * Test case: should return 500 if tracking order fails.
+     */
     it('should return 500 if tracking order fails', async () => {
         // Mocking Order.findOne to throw an error
         Order.findOne = jest.fn().mockRejectedValueOnce(new Error('Error tracking order'));
@@ -38,6 +48,9 @@ describe('Track Order Integration Test', () => {
         expect(response.body.message).toBe('Error tracking order');
     });
 
+    /**
+     * Test case: should return 200 and order details if order is found.
+     */
     it('should return 200 and order details if order is found', async () => {
         // Mocking Order.findOne to return a sample order
         const mockOrder = { orderId: '123', status: 'pending' };

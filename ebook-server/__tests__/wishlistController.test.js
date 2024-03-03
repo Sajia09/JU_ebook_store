@@ -1,8 +1,8 @@
-const wishlistController = require('f:/keya/ebook-server/controllers/wishlistController.js');
-const Wishlist = require("f:/keya/ebook-server/models/wishlist.js");
+const wishlistController = require('');
+const Wishlist = require("D:/CSE/4 Fourth Year/4-2/SQA PROJECT/Orthi/JU_ebook_store/ebook-server/controllers/ControlWishlist.js");
 
 // Mocking the Wishlist model
-jest.mock('f:/keya/ebook-server/models/Wishlist');
+jest.mock('D:/CSE/4 Fourth Year/4-2/SQA PROJECT/Orthi/JU_ebook_store/ebook-server/models/wishlist.js');
 
 /**
  * Test suite for Wishlist Controller

@@ -14,9 +14,7 @@ app.post('/payment', async (req, res) => {
         const { orderId, amount } = req.body;
     
         // Check if orderId and amount are present
-        if (!orderId || !amount) {
-            return res.status(400).json({ message: 'Order details are missing' });
-        }
+      
     
         // Check if amount is a number
         if (isNaN(amount)) {
